@@ -7,7 +7,7 @@ namespace TestSeguros.Repositories.Abstraction
 {
     public interface ITSegPolizasRepository : IDisposable
     {
-        void CreateTSegPoliza(TSeg_Polizas tSegPoliza);
+        TSeg_Polizas CreateTSegPoliza(TSeg_Polizas tSegPoliza);
         List<TSeg_Polizas> ReadTSegPolizas();
         void UpdateTSegPoliza(TSeg_Polizas tSegPoliza);
         void DeleteTSegPoliza(TSeg_Polizas tSegPoliza);

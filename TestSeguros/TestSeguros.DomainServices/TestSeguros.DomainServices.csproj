@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TestSeguros.Data\TestSeguros.Data.csproj" />
     <ProjectReference Include="..\TestSeguros.Domain\TestSeguros.Domain.csproj" />
+    <ProjectReference Include="..\TestSeguros.Repositories\TestSeguros.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TestSeguros.Application\TestSeguros.Application.csproj" />
+    <ProjectReference Include="..\TestSeguros.Data\TestSeguros.Data.csproj" />
     <ProjectReference Include="..\TestSeguros.Domain\TestSeguros.Domain.csproj" />
   </ItemGroup>
 

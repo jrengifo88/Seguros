@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Composition;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -12,13 +11,17 @@ using TestSeguros.Application.Response;
 namespace TestSeguros.Controllers
 {
     /// <summary>
-    ///  Policy Controller
+    ///  Poliza Controller
     /// </summary>
     [RoutePrefix("api/policies")]
-    [Export(typeof(PolicyController))]
     public class PolicyController : ApiController
     {
         IPolicyApplicationService PolicyApplicationService { get; set; }
+
+        /// <summary>
+        ///  Poliza Controller Constructor
+        /// </summary>
+        /// <param name="policyApplicationService">Policy Application Service</param>
         public PolicyController(IPolicyApplicationService policyApplicationService)
         {
             PolicyApplicationService = policyApplicationService;
@@ -26,9 +29,9 @@ namespace TestSeguros.Controllers
 
         [HttpPost]
         [Route("")]
-        public PolicyResponse GetPolicy([FromBody] PolicyRequest policyRequest)
+        public PolicyResponse CreatePolicy([FromBody] PolicyRequest policyRequest)
         {
-            return new PolicyResponse();
+            return PolicyApplicationService.CreatePolicy(policyRequest);
         }
 
     }

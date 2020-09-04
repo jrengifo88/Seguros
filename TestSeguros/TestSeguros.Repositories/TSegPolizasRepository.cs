@@ -15,10 +15,11 @@ namespace TestSeguros.Repositories
         {
             _context = context;
         }
-        public void CreateTSegPoliza(TSeg_Polizas tSegPoliza)
+        public TSeg_Polizas CreateTSegPoliza(TSeg_Polizas tSegPoliza)
         {
             _context.TSeg_Polizas.Add(tSegPoliza);
             _context.SaveChanges();
+            return tSegPoliza;
         }
 
         public void DeleteTSegPoliza(TSeg_Polizas tSegPoliza)

@@ -229,16 +229,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PolizaController.cs" />
+    <Compile Include="Controllers\PolicyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="SegurosContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TSeg_Clientes.cs" />
-    <Compile Include="TSeg_Polizas.cs" />
-    <Compile Include="TSeg_Tipo_Cubrimiento.cs" />
-    <Compile Include="TSeg_Usuarios.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -295,6 +290,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TestSeguros.Application\TestSeguros.Application.csproj">
+      <Project>{7A84E9FF-1BBA-41CB-896E-740599FD3694}</Project>
+      <Name>TestSeguros.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestSeguros.Repositories\TestSeguros.Repositories.csproj">
       <Project>{936fcdf9-bf5a-4a58-b2ad-c0fe4c8afff1}</Project>
       <Name>TestSeguros.Repositories</Name>
