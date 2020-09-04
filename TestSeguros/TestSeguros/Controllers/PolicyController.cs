@@ -7,6 +7,7 @@ using System.Web.Http;
 using TestSeguros.Application.Abstraction;
 using TestSeguros.Application.Request;
 using TestSeguros.Application.Response;
+using TestSeguros.ApplicationServices;
 
 namespace TestSeguros.Controllers
 {
@@ -25,6 +26,11 @@ namespace TestSeguros.Controllers
         public PolicyController(IPolicyApplicationService policyApplicationService)
         {
             PolicyApplicationService = policyApplicationService;
+        }
+
+        public PolicyController()
+        {
+            PolicyApplicationService = new PolicyApplicationService();
         }
 
         [HttpPost]

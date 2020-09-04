@@ -7,6 +7,7 @@ using TestSeguros.Application.Response;
 using TestSeguros.ApplicationServices.Mapper;
 using TestSeguros.Data;
 using TestSeguros.Domain.Abstraction;
+using TestSeguros.DomainServices;
 
 namespace TestSeguros.ApplicationServices
 {
@@ -20,6 +21,10 @@ namespace TestSeguros.ApplicationServices
         public PolicyApplicationService(IPolicyDomainService policyDomainService)
         {
             PolicyDomainService = policyDomainService;
+        }
+        public PolicyApplicationService()
+        {
+            PolicyDomainService = new PolicyDomainService();
         }
 
         public PolicyResponse CreatePolicy(PolicyRequest policyRequest)

@@ -290,6 +290,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TestSeguros.ApplicationServices\TestSeguros.ApplicationServices.csproj">
+      <Project>{D3A540FB-49DF-4532-96B2-B9D570A8D4DC}</Project>
+      <Name>TestSeguros.ApplicationServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestSeguros.Application\TestSeguros.Application.csproj">
       <Project>{7A84E9FF-1BBA-41CB-896E-740599FD3694}</Project>
       <Name>TestSeguros.Application</Name>
