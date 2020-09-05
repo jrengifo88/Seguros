@@ -9,5 +9,9 @@ namespace TestSeguros.Application.Abstraction
     public interface ICustomerApplicationService
     {
         CustomerResponse CreateCustomer(CustomerRequest customerRequest);
+        List<CustomerResponse> ReadCustomers();
+        CustomerResponse ReadCustomerById(long id);
+        long DeleteCustomer(long customerId);
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,7 +18,7 @@ namespace TestSeguros.Controllers
             UserApplicationService = new UserApplicationService();
             bool isValid = UserApplicationService.ValidateUser(u, p);
 
-            if(isValid) return View("~/Views/Home/Opciones.cshtml");
+            if (isValid) return View("~/Views/Home/Opciones.cshtml");
             else
             {
                 ViewBag.Error = "Usuario o contraseña incorrecto.";

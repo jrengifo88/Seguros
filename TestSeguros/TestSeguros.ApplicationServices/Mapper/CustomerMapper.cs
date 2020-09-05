@@ -18,6 +18,7 @@ namespace TestSeguros.ApplicationServices.Mapper
                 telefono = customerRequest.telefono,
                 direccion = customerRequest.direccion,
                 tipo_identificacion = customerRequest.tipo_identificacion,
+                identificacion = customerRequest.identificacion,
                 id = customerRequest.id
             };
         }
@@ -30,11 +31,23 @@ namespace TestSeguros.ApplicationServices.Mapper
                 telefono = customer.telefono,
                 direccion = customer.direccion,
                 tipo_identificacion = customer.tipo_identificacion,
+                identificacion = customer.identificacion,
                 id = customer.id
             };
         }
 
+        public static List<CustomerResponse> TransformTSegClientesToCustomerResponseList(List<TSeg_Clientes> customers)
+        {
+            List<CustomerResponse> result = new List<CustomerResponse>();
 
-        
+            foreach (TSeg_Clientes i in customers)
+            {
+                result.Add(TransformTSegClienteToCustomerResponse(i));
+            }
+            return result;
+        }
+
+
+
     }
 }

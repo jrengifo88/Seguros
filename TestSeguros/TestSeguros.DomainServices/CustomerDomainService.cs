@@ -26,5 +26,21 @@ namespace TestSeguros.DomainServices
         {
             return CustomerRepository.CreateTSegCliente(customer);
         }
+
+        public List<TSeg_Clientes> ReadCustomers()
+        {
+            return CustomerRepository.ReadTSegClientes();
+        }
+
+        public long DeleteCustomer(TSeg_Clientes customer)
+        {
+            CustomerRepository.DeleteTSegCliente(customer);
+            return customer.id;
+        }
+
+        public TSeg_Clientes ReadCustomerById(long id)
+        {
+            return CustomerRepository.ReadTSegClienteById(id);
+        }
     }
 }

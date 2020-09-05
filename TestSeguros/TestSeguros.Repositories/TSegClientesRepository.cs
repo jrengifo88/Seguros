@@ -59,5 +59,11 @@ namespace TestSeguros.Repositories
             clientes.telefono = tSegCliente.telefono;
             _context.SaveChanges();
         }
+
+        public TSeg_Clientes ReadTSegClienteById(long id)
+        {
+            TSeg_Clientes cliente = _context.TSeg_Clientes.Where(x => x.id == id).FirstOrDefault();
+            return cliente;
+        }
     }
 }

@@ -29,9 +29,40 @@ namespace TestSeguros.ApplicationServices
 
         public CustomerResponse CreateCustomer(CustomerRequest customerRequest)
         {
-            TSeg_Clientes customer = CustomerMapper.TransformCustomerRequestToTSegCliente(customerRequest);
-            TSeg_Clientes customerOut = CustomerDomainService.CreateCustomer(customer);
-            return customerOut != null ? CustomerMapper.TransformTSegClienteToCustomerResponse(customerOut) : null;
+            try
+            {
+                TSeg_Clientes customer = CustomerMapper.TransformCustomerRequestToTSegCliente(customerRequest);
+                TSeg_Clientes customerOut = CustomerDomainService.CreateCustomer(customer);
+                return customerOut != null ? CustomerMapper.TransformTSegClienteToCustomerResponse(customerOut) : null;
+            }
+            catch
+            {
+                return new CustomerResponse();
+            }
+        }
+
+        public List<CustomerResponse> ReadCustomers()
+        {
+            List<TSeg_Clientes> customers = CustomerDomainService.ReadCustomers();
+            return customers.Count > 0 ? CustomerMapper.TransformTSegClientesToCustomerResponseList(customers) : new List<CustomerResponse>();
+        }
+
+        public long DeleteCustomer(long customerId)
+        {
+            try {
+                TSeg_Clientes tSegCustomer = CustomerDomainService.ReadCustomerById(customerId);
+                return CustomerDomainService.DeleteCustomer(tSegCustomer);
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+
+        public CustomerResponse ReadCustomerById(long id)
+        {
+            TSeg_Clientes customer = CustomerDomainService.ReadCustomerById(id);
+            return customer != null ? CustomerMapper.TransformTSegClienteToCustomerResponse(customer) : null;
         }
     }
 }

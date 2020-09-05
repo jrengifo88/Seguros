@@ -2,11 +2,18 @@
     ViewBag.Title = "Opciones";
 }
 
-    <div class="jumbotron">
-        <h1>Bienvenido!!!</h1>
-        <div>
-            <button type="submit" class="btn btn-primary">Clientes</button>
-            <button type="submit" class="btn btn-primary">Pólizas</button>
-       </div>
+<div class="jumbotron">
+    <h1>Bienvenido!!!</h1>
+    <div>
+        <button type="submit" class="btn btn-primary" onclick="toCustomers()" >Clientes</button>
+        <button type="submit" class="btn btn-primary">Pólizas</button>
     </div>
+</div>
+
+<script type="text/javascript">
+    function toCustomers()
+    {
+     window.location.href = "@Url.Action("Customers", "Customers")";
+   }
+</script>
 
