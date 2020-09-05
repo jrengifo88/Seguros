@@ -9,6 +9,7 @@ namespace TestSeguros.Repositories.Abstraction
     {
         TSeg_Polizas CreateTSegPoliza(TSeg_Polizas tSegPoliza);
         List<TSeg_Polizas> ReadTSegPolizas();
+        TSeg_Polizas ReadTSegPolizaById(long id);
         void UpdateTSegPoliza(TSeg_Polizas tSegPoliza);
         void DeleteTSegPoliza(TSeg_Polizas tSegPoliza);
 

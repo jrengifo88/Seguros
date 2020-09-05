@@ -9,5 +9,8 @@ namespace TestSeguros.Application.Abstraction
     public interface IPolicyApplicationService
     {
         PolicyResponse CreatePolicy(PolicyRequest policyRequest);
+        List<PolicyResponse> ReadPolicies();
+        PolicyResponse ReadPolicyById(long id);
+        long DeletePolicy(long policyId);
     }
 }

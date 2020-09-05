@@ -59,6 +59,8 @@ namespace TestSeguros.Repositories
             clientePoliza.meses_cobertura = tSegClientePoliza.meses_cobertura;
             clientePoliza.riesgo = tSegClientePoliza.riesgo;
             clientePoliza.precio = tSegClientePoliza.precio;
+            clientePoliza.riesgo = tSegClientePoliza.riesgo;
+            clientePoliza.riesgo = tSegClientePoliza.riesgo;
             _context.SaveChanges();
         }
     }

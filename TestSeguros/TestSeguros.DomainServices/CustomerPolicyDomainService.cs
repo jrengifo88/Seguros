@@ -12,9 +12,9 @@ namespace TestSeguros.DomainServices
     {
         ITSegClientesPolizasRepository CustomerPolicyRepository { get; set; }
 
-        public CustomerPolicyDomainService(ITSegClientesPolizasRepository customerPolicyRepository)
+        public CustomerPolicyDomainService(ITSegClientesPolizasRepository repository)
         {
-            CustomerPolicyRepository = customerPolicyRepository;
+            CustomerPolicyRepository = repository;
         }
 
         public CustomerPolicyDomainService()
@@ -24,7 +24,7 @@ namespace TestSeguros.DomainServices
 
         public TSeg_Clientes_Polizas CreateCustomerPolicy(TSeg_Clientes_Polizas customerPolicy)
         {
-            return CustomerPolicyRepository.CreateTSegClientePoliza(customerPolicy);
+            throw new NotImplementedException();
         }
     }
 }

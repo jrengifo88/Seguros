@@ -33,5 +33,31 @@ namespace TestSeguros.ApplicationServices
             TSeg_Polizas policyOut = PolicyDomainService.CreatePolicy(policy);
             return policyOut != null ? PolicyMapper.TransformTSegPolizaToPolicyResponse(policyOut) : null;
         }
+
+        public List<PolicyResponse> ReadPolicies()
+        {
+            List<TSeg_Polizas> policies = PolicyDomainService.ReadPolicies();
+            return policies.Count > 0 ? PolicyMapper.TransformTSegPolizasToPolicyResponseList(policies) : new List<PolicyResponse>();
+
+        }
+
+        public PolicyResponse ReadPolicyById(long id)
+        {
+            TSeg_Polizas poliza = PolicyDomainService.ReadPolicyById(id);
+            return poliza != null ? PolicyMapper.TransformTSegPolizaToPolicyResponse(poliza) : null;
+        }
+
+        public long DeletePolicy(long policyId)
+        {
+            try
+            {
+                TSeg_Polizas policy = PolicyDomainService.ReadPolicyById(policyId);
+                return PolicyDomainService.DeletePolicy(policy);
+            }
+            catch
+            {
+                return -1;
+            }
+        }
     }
 }

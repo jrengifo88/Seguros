@@ -6,7 +6,7 @@
     <h1>Bienvenido!!!</h1>
     <div>
         <button type="submit" class="btn btn-primary" onclick="toCustomers()" >Clientes</button>
-        <button type="submit" class="btn btn-primary">Pólizas</button>
+        <button type="submit" class="btn btn-primary" onclick="toPolicies()" >Pólizas</button>
     </div>
 </div>
 
@@ -14,6 +14,11 @@
     function toCustomers()
     {
      window.location.href = "@Url.Action("Customers", "Customers")";
+    }
+
+    function toPolicies()
+    {
+     window.location.href = "@Url.Action("Policies", "Policies")";
    }
 </script>
 

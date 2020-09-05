@@ -28,7 +28,18 @@ namespace TestSeguros.ApplicationServices.Mapper
             };
         }
 
+        public static List<PolicyResponse> TransformTSegPolizasToPolicyResponseList(List<TSeg_Polizas> customers)
+        {
+            List<PolicyResponse> result = new List<PolicyResponse>();
 
-        
+            foreach (TSeg_Polizas i in customers)
+            {
+                result.Add(TransformTSegPolizaToPolicyResponse(i));
+            }
+            return result;
+        }
+
+
+
     }
 }

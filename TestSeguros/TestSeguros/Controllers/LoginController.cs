@@ -26,7 +26,6 @@ namespace TestSeguros.Controllers
             }
 
         }
-
       
         public ActionResult Register()
         {

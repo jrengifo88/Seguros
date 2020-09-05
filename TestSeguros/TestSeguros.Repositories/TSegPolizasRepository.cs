@@ -57,5 +57,11 @@ namespace TestSeguros.Repositories
             poliza.nombre = tSegPoliza.nombre;
             _context.SaveChanges();
         }
+
+        public TSeg_Polizas ReadTSegPolizaById(long id)
+        {
+            TSeg_Polizas poliza = _context.TSeg_Polizas.Where(x => x.id == id).FirstOrDefault();
+            return poliza;
+        }
     }
 }

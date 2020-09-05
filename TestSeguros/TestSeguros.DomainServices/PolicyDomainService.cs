@@ -25,5 +25,21 @@ namespace TestSeguros.DomainServices
         {
             return PolicyRepository.CreateTSegPoliza(policy);
         }
+
+        public List<TSeg_Polizas> ReadPolicies()
+        {
+            return PolicyRepository.ReadTSegPolizas();
+        }
+
+        public TSeg_Polizas ReadPolicyById(long id)
+        {
+            return PolicyRepository.ReadTSegPolizaById(id);
+        }
+
+        public long DeletePolicy(TSeg_Polizas policy)
+        {
+            PolicyRepository.DeleteTSegPoliza(policy);
+            return policy.id;
+        }
     }
 }
