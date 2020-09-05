@@ -1,12 +1,12 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Registro";
 }
 
     <div class="jumbotron">
-        <h1>Seguros JD</h1>
+        <h1>Registrarse</h1>
         <div>
-            <h2>Login</h2>
-            @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+            
+            @using (Html.BeginForm("Register", "Login", FormMethod.Post))
             {
                 <div class="form-group">
                     <label for="u">Usuario</label>
@@ -16,12 +16,10 @@
                     <label for="p">Contraseña</label>
                     <input class="form-control" type="password" name="p" placeholder="Contraseña" required="required" />
                 </div>
-                <button type="submit" class="btn btn-primary">Ingresar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
 
             }
-            <br />
-            @Html.ActionLink("Registrarse", "Register", "Login")
-
+           
         </div>
         @{ if (ViewBag.Error != null) { 
                     <h3>@ViewBag.Error</h3>

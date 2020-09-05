@@ -15,14 +15,14 @@ namespace TestSeguros.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Aplicación de prueba para Seguros.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Juan David Rengifo D.";
 
             return View();
         }
