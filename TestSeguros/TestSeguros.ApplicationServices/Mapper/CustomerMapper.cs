@@ -32,7 +32,9 @@ namespace TestSeguros.ApplicationServices.Mapper
                 direccion = customer.direccion,
                 tipo_identificacion = customer.tipo_identificacion,
                 identificacion = customer.identificacion,
-                id = customer.id
+                id = customer.id,
+                policiesDetails = getPolicies(customer)
+                
             };
         }
 
@@ -45,6 +47,16 @@ namespace TestSeguros.ApplicationServices.Mapper
                 result.Add(TransformTSegClienteToCustomerResponse(i));
             }
             return result;
+        }
+
+        public static List<CustomerPolicyResponse> getPolicies(TSeg_Clientes cliente)
+        {
+            List<CustomerPolicyResponse> list = new List<CustomerPolicyResponse>();
+            foreach (TSeg_Clientes_Polizas p in cliente.TSeg_Clientes_Polizas)
+            {
+                list.Add(CustomerPolicyMapper.TransformTSegClientePolizaToCustomerPolicyResponse(p));
+            }
+            return list;
         }
 
 

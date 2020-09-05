@@ -6,15 +6,18 @@ using System.Web.Mvc;
 using TestSeguros.Application.Request;
 using TestSeguros.Application.Response;
 using TestSeguros.ApplicationServices;
+using TestSeguros.Models;
 
 namespace TestSeguros.Controllers
 {
     public class CustomersController : Controller
     {
         CustomerApplicationService CustomerApplicationService;
+        PolicyApplicationService PolicyApplicationService;
         public CustomersController()
         {
             CustomerApplicationService = new CustomerApplicationService();
+            PolicyApplicationService = new PolicyApplicationService();
         }
 
         public ActionResult Customers()
@@ -51,6 +54,28 @@ namespace TestSeguros.Controllers
                 ViewBag.Error = "El cliente no pudo ser eliminado.";
                 return View("~/Views/Customers/Customers.cshtml");
             }
+        }
+
+
+        public ActionResult PoliciesDetails(long id)
+        {
+            CustomerResponse customer = CustomerApplicationService.ReadCustomerById(id);
+            CustomerPoliciesModelView model = new CustomerPoliciesModelView();
+            model.customer = customer;
+            model.policiesDetails = getPoliciesDetails(customer.policiesDetails);
+
+            return View("~/Views/Customers/PoliciesDetails.cshtml", model);
+        }
+
+        public List<CustomerPolicyResponse> getPoliciesDetails(List<CustomerPolicyResponse> list)
+        {
+            for (int i=0; i<list.Count;i++)
+            {
+                PolicyResponse policy = PolicyApplicationService.ReadPolicyById(list.ElementAt(i).id_poliza);
+                list.ElementAt(i).nombre_poliza = policy.nombre;
+            }
+            
+            return list;
         }
 
 

@@ -1,0 +1,51 @@
+﻿@model TestSeguros.Models.CustomerPoliciesModelView
+
+@{
+    ViewBag.Title = "Detalle Cliente";
+}
+
+<h2>Detalle Cliente: @Model.customer.apellidos  @Model.customer.nombres</h2>
+<h3>Identificación: @Model.customer.identificacion</h3>
+
+<p>
+    @Html.ActionLink("Adicionar Póliza", "AddPolicy")
+</p>
+<table class="table">
+    <tr>
+        <th>Póliza</th>
+        <th>Riesgo</th>
+        <th>Fecha Inicio</th>
+        <th>Meses Cobertura</th>
+        <th>Precio</th>
+        <th>Cobertura (%)</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.policiesDetails)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.nombre_poliza)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.riesgo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.fecha_inicio)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.meses_cobertura)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.precio)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.cobertura)%
+    </td>
+    <td>       
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+</tr>
+    }
+
+</table>

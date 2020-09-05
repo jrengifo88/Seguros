@@ -1,0 +1,30 @@
+﻿@model TestSeguros.Models.CoveringModelView
+
+@{
+    ViewBag.Title = "CoveringDetails";
+}
+
+<h2>Detalles de Cubrimiento para: @Model.policy.nombre</h2>
+
+<p>
+    @Html.ActionLink("Adicionar Cubrimiento", "AddCovering")
+</p>
+<table class="table">
+    <tr>
+        <th>Cubrimiento</th>
+        <th>
+        </th>
+    </tr>
+
+@foreach (var item in Model.covering) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { policyId = Model.policy.id, coveringTypeId=item.id})
+        </td>
+    </tr>
+}
+
+</table>

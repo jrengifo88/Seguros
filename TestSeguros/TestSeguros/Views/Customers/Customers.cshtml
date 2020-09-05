@@ -56,10 +56,10 @@
                     @Html.DisplayFor(modelItem => item.direccion)
                 </td>
                 <td>
-                    @using (Html.BeginForm())
-                    {
-                        @Html.ActionLink("Borrar", "Delete", new { id = item.id })
-                    }
+                   
+                        @Html.ActionLink("Borrar", "Delete", new { id = item.id }) |
+                        @Html.ActionLink("Pólizas", "PoliciesDetails", new { id = item.id })
+                    
                 </td>
             </tr>
         }

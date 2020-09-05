@@ -26,10 +26,10 @@ namespace TestSeguros.ApplicationServices.Mapper
         {
             return new CustomerPolicyResponse
             {
-                cobertura = customerPolicy.cobertura,
-                fecha_inicio = customerPolicy.fecha_inicio,
-                meses_cobertura = customerPolicy.meses_cobertura,
-                precio = customerPolicy.precio,
+                cobertura = customerPolicy.cobertura.ToString(),
+                fecha_inicio = customerPolicy.fecha_inicio.ToString(),
+                meses_cobertura = Convert.ToInt16(customerPolicy.meses_cobertura),
+                precio = customerPolicy.precio.ToString(),
                 riesgo = customerPolicy.riesgo,
                 id_poliza = customerPolicy.id_poliza,
                 id_cliente = customerPolicy.id_cliente

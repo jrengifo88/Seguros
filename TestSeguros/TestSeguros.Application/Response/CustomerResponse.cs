@@ -13,5 +13,7 @@ namespace TestSeguros.Application.Response
         public string apellidos { get; set; }
         public string telefono { get; set; }
         public string direccion { get; set; }
+
+        public List<CustomerPolicyResponse> policiesDetails { get; set; }
     }
 }

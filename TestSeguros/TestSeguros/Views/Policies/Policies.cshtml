@@ -29,7 +29,8 @@
             @Html.DisplayFor(modelItem => item.descripcion)
         </td>
         <td>
-            @Html.ActionLink("Borrar", "Delete", new { id=item.id })
+            @Html.ActionLink("Borrar", "Delete", new { id = item.id }) |
+            @Html.ActionLink("Cubrimiento", "Details", new { id = item.id })
         </td>
     </tr>
 }

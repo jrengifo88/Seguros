@@ -6,12 +6,14 @@ using System.Web.Mvc;
 using TestSeguros.Application.Request;
 using TestSeguros.Application.Response;
 using TestSeguros.ApplicationServices;
+using TestSeguros.Models;
 
 namespace TestSeguros.Controllers
 {
     public class PoliciesController : Controller
     {
         PolicyApplicationService PolicyApplicationService;
+
         public PoliciesController()
         {
             PolicyApplicationService = new PolicyApplicationService();
@@ -26,6 +28,17 @@ namespace TestSeguros.Controllers
         public ActionResult Create()
         {
             return View("~/Views/Policies/Create.cshtml");
+        }
+
+        public ActionResult Details(long id)
+        {
+            PolicyResponse policy = PolicyApplicationService.ReadPolicyById(id);
+            CoveringModelView model = new CoveringModelView();
+            model.policy = policy;
+            model.covering = policy.TSeg_Tipo_Cubrimiento;
+
+            return View("~/Views/Policies/CoveringDetails.cshtml",model);
+
         }
 
         [HttpPost]

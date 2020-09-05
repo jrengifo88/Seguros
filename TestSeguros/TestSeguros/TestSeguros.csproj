@@ -352,6 +352,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerPoliciesModelView.cs" />
+    <Compile Include="Models\CoveringModelView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -396,10 +398,11 @@
     <Content Include="Views\Customers\Customers.cshtml" />
     <Content Include="Views\Policies\Policies.cshtml" />
     <Content Include="Views\Policies\Create.cshtml" />
+    <Content Include="Views\Policies\CoveringDetails.cshtml" />
+    <Content Include="Views\Customers\PoliciesDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

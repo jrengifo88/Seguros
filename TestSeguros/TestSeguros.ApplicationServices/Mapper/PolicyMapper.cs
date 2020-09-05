@@ -24,7 +24,8 @@ namespace TestSeguros.ApplicationServices.Mapper
             {
                 nombre = policy.nombre,
                 descripcion = policy.descripcion,
-                id = policy.id
+                id = policy.id,
+                TSeg_Tipo_Cubrimiento = getCoveringTypes(policy)
             };
         }
 
@@ -37,6 +38,16 @@ namespace TestSeguros.ApplicationServices.Mapper
                 result.Add(TransformTSegPolizaToPolicyResponse(i));
             }
             return result;
+        }
+
+        public static List<CoveringTypeResponse> getCoveringTypes(TSeg_Polizas policy)
+        {
+            List<CoveringTypeResponse> list = new List<CoveringTypeResponse>();
+            foreach(TSeg_Tipo_Cubrimiento tc in policy.TSeg_Tipo_Cubrimiento)
+            {
+                list.Add(CoveringTypeMapper.TransformTSegTipoCubrimientoToCoveringTypeResponse(tc));
+            }
+            return list;
         }
 
 
