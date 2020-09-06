@@ -21,7 +21,7 @@ namespace TestSeguros.Validations
             {
                 throw new Exception("El porcentaje de cobertura debe estar entre 0 y 100");
             }
-            if (customerPolicy.riesgo.Equals("Alto") || customerPolicy.cobertura > 50)
+            if (customerPolicy.riesgo.Equals("Alto") && customerPolicy.cobertura > 50)
             {
                 throw new Exception("Para riesgo alto el porcentaje de cobertura debe ser máximo 50");
             }

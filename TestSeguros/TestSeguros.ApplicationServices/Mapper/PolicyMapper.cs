@@ -54,13 +54,16 @@ namespace TestSeguros.ApplicationServices.Mapper
         public static List<TSeg_Tipo_Cubrimiento> getCoveringTypesFromPolicyRequest(PolicyRequest policy)
         {
             List<TSeg_Tipo_Cubrimiento> list = new List<TSeg_Tipo_Cubrimiento>();
-            foreach (CoveringTypeResponse tc in policy.TSeg_Tipo_Cubrimiento)
+            if (policy.TSeg_Tipo_Cubrimiento != null)
             {
-                list.Add(new TSeg_Tipo_Cubrimiento
+                foreach (CoveringTypeResponse tc in policy.TSeg_Tipo_Cubrimiento)
                 {
-                    id = tc.id,
-                    nombre = tc.nombre
-                });
+                    list.Add(new TSeg_Tipo_Cubrimiento
+                    {
+                        id = tc.id,
+                        nombre = tc.nombre
+                    });
+                }
             }
             return list;
         }

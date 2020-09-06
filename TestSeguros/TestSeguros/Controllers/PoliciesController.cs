@@ -41,7 +41,7 @@ namespace TestSeguros.Controllers
             model.policy = policy;
             model.covering = policy.TSeg_Tipo_Cubrimiento;
 
-            return View("~/Views/Policies/CoveringDetails.cshtml",model);
+            return View("~/Views/Policies/CoveringDetails.cshtml", model);
 
         }
 
@@ -74,64 +74,56 @@ namespace TestSeguros.Controllers
         {
             PolicyResponse policy = PolicyApplicationService.ReadPolicyById(policyId);
 
-            List<CoveringTypeResponse> coveringTypes = CoveringTypeApplicationService.ReadCoveringTypes();
+          //  List<CoveringTypeResponse> coveringTypes = CoveringTypeApplicationService.ReadCoveringTypes();
             ViewBag.PolicyName = policy.nombre;
             ViewBag.PolicyId = policy.id;
-            ViewBag.coveringTypes = new SelectList(coveringTypes, nameof(CoveringTypeResponse.id), nameof(PolicyResponse.nombre));
+           // ViewBag.coveringTypes = new SelectList(coveringTypes, nameof(CoveringTypeResponse.id), nameof(PolicyResponse.nombre));
             return View("~/Views/Policies/AddCovering.cshtml");
         }
 
         [HttpPost]
-        public ActionResult AddCovering(long policyId, long coveringId)
+        public ActionResult AddCovering(long policyId, string coveringName)
         {
             PolicyResponse policy = PolicyApplicationService.ReadPolicyById(policyId);
             try
             {
-                //PolicyRequest request = new PolicyRequest
-                //{
-                //    id = policy.id,
-                //    descripcion = policy.descripcion,
-                //    nombre = policy.nombre,
-                //    TSeg_Tipo_Cubrimiento = getCoveringTypes(policy, coveringId)
-                //};
-                PolicyCoveringTypeRequest request = new PolicyCoveringTypeRequest
+                PolicyRequest request = new PolicyRequest
                 {
-                    id_poliza = policyId,
-                    id_tipo_cubrimiento = coveringId
+                    id = policy.id,
+                    descripcion = policy.descripcion,
+                    nombre = policy.nombre,
+                    TSeg_Tipo_Cubrimiento = getCoveringTypes(policy, coveringName)
                 };
 
-                PolicyCoveringTypeResponse response = PolicyCoveringTypeApplicationService.CreatePolicyCoveringType(request);
-                // int response = PolicyApplicationService.UpdatePolicy(request);
-                return RedirectToAction("CoveringDetails", new { id = policyId });
+                int response = PolicyApplicationService.UpdatePolicy(request);
+                return RedirectToAction("Details", new { id = policyId });
             }
             catch
             {
-                List<CoveringTypeResponse> coveringTypes = CoveringTypeApplicationService.ReadCoveringTypes();
                 ViewBag.PolicyName = policy.nombre;
                 ViewBag.PolicyId = policy.id;
-                ViewBag.coveringTypes = new SelectList(coveringTypes, nameof(CoveringTypeResponse.id), nameof(PolicyResponse.nombre));
-                
+
                 ViewBag.Error = "El tipo de cubrimiento no se pudo adicionar.";
 
                 return View("~/Views/Policies/AddCovering.cshtml");
             }
         }
 
-        public List<CoveringTypeResponse> getCoveringTypes(PolicyResponse policy, long newCoveringType)
+        public List<CoveringTypeResponse> getCoveringTypes(PolicyResponse policy, string newCoveringType)
         {
             List<CoveringTypeResponse> list = new List<CoveringTypeResponse>();
             foreach (CoveringTypeResponse tc in policy.TSeg_Tipo_Cubrimiento)
             {
-                list.Add(new CoveringTypeResponse { 
-                    id =tc.id,
+                list.Add(new CoveringTypeResponse
+                {
+                    id = tc.id,
                     nombre = tc.nombre
                 });
             }
-            CoveringTypeResponse covering = CoveringTypeApplicationService.ReadCoveringTypeById(newCoveringType);
             list.Add(new CoveringTypeResponse
             {
-                id = newCoveringType ,
-                nombre =covering.nombre
+                nombre = newCoveringType
+
             });
             return list;
         }

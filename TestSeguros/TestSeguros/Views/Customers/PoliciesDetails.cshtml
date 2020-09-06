@@ -18,7 +18,7 @@
         <th>Meses Cobertura</th>
         <th>Precio</th>
         <th>Cobertura (%)</th>
-        <th></th>
+      
     </tr>
 
     @foreach (var item in Model.policiesDetails)
@@ -42,9 +42,7 @@
     <td>
         @Html.DisplayFor(modelItem => item.cobertura)%
     </td>
-    <td>       
-        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-    </td>
+   
 </tr>
     }
 

@@ -12,8 +12,7 @@
 <table class="table">
     <tr>
         <th>Cubrimiento</th>
-        <th>
-        </th>
+       
     </tr>
 
 @foreach (var item in Model.covering) {
@@ -21,9 +20,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.nombre)
         </td>
-        <td>
-            @Html.ActionLink("Delete", "Delete", new { policyId = Model.policy.id, coveringTypeId=item.id})
-        </td>
+       
     </tr>
 }
 

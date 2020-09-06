@@ -28,7 +28,7 @@ CREATE TABLE TSeg_Clientes(
 
 CREATE TABLE TSeg_Tipo_Cubrimiento(
    id bigint NOT NULL IDENTITY PRIMARY KEY,  
-   nombre varchar(50) NOT NULL   
+   nombre varchar(50) NOT NULL 
 );
 
 CREATE TABLE TSeg_Polizas(

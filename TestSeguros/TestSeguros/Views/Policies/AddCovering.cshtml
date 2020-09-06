@@ -9,13 +9,8 @@
         @using (Html.BeginForm("AddCovering", "Policies", FormMethod.Post))
         {
             <div class="form-group">
-                <label for="coveringId">Tipo Cobertura:</label>
-                <select class="form-control" name="coveringId">
-                    @foreach (var item in ViewBag.coveringTypes)
-                    {
-                        <option value="@item.Value">@item.Text</option>
-                    }
-                </select>
+                <label for="coveringName">Tipo Cobertura:</label>
+                <input class="form-control" type="text" name="coveringName" />
             </div>
             <div class="form-group">
                 <input type="text" name="policyId" value="@ViewBag.PolicyId" hidden />
