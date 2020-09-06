@@ -11,5 +11,7 @@ namespace TestSeguros.Domain.Abstraction
         List<TSeg_Polizas> ReadPolicies();
         TSeg_Polizas ReadPolicyById(long id);
         long DeletePolicy(TSeg_Polizas policy);
+
+        void UpdatePolicy(TSeg_Polizas policy);
     }
 }

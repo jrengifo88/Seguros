@@ -55,6 +55,7 @@ namespace TestSeguros.Repositories
             TSeg_Polizas poliza = _context.TSeg_Polizas.Where(x => x.id == tSegPoliza.id).FirstOrDefault();
             poliza.descripcion = tSegPoliza.descripcion;
             poliza.nombre = tSegPoliza.nombre;
+            poliza.TSeg_Tipo_Cubrimiento = tSegPoliza.TSeg_Tipo_Cubrimiento;
             _context.SaveChanges();
         }
 

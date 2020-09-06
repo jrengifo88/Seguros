@@ -59,5 +59,20 @@ namespace TestSeguros.ApplicationServices
                 return -1;
             }
         }
+
+        public int UpdatePolicy(PolicyRequest policyRequest)
+        {
+            try
+            {
+                TSeg_Polizas policy = PolicyMapper.TransformPolicyRequestToTSegPoliza(policyRequest);
+                PolicyDomainService.UpdatePolicy(policy);
+                return 1;
+            }
+            catch(Exception  e)
+            {
+                return -1;
+            }
+        }
+
     }
 }

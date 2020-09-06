@@ -17,6 +17,7 @@ namespace TestSeguros.Data
         public virtual DbSet<TSeg_Polizas> TSeg_Polizas { get; set; }
         public virtual DbSet<TSeg_Tipo_Cubrimiento> TSeg_Tipo_Cubrimiento { get; set; }
         public virtual DbSet<TSeg_Usuarios> TSeg_Usuarios { get; set; }
+        public virtual DbSet<TSeg_Polizas_Tipo_Cubrimiento> TSeg_Polizas_Tipo_Cubrimiento { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

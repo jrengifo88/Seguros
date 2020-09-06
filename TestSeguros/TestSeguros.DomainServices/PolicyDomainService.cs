@@ -41,5 +41,10 @@ namespace TestSeguros.DomainServices
             PolicyRepository.DeleteTSegPoliza(policy);
             return policy.id;
         }
+
+        public void UpdatePolicy(TSeg_Polizas policy)
+        {
+            PolicyRepository.UpdateTSegPoliza(policy);
+        }
     }
 }

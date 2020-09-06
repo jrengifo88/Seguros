@@ -7,7 +7,7 @@
 <h2>Detalles de Cubrimiento para: @Model.policy.nombre</h2>
 
 <p>
-    @Html.ActionLink("Adicionar Cubrimiento", "AddCovering")
+    @Html.ActionLink("Adicionar Cubrimiento", "AddCovering", new { policyId = Model.policy.id})
 </p>
 <table class="table">
     <tr>
@@ -28,3 +28,6 @@
 }
 
 </table>
+<div>
+    @Html.ActionLink("Volver", "Policies", "Policies")
+</div>

@@ -36,7 +36,9 @@ namespace TestSeguros.ApplicationServices
 
         public List<CoveringTypeResponse> ReadCoveringTypes()
         {
-            throw new NotImplementedException();
+            List<TSeg_Tipo_Cubrimiento> coveringTypes = CoveringTypeDomain.ReadCoveringTypes();
+            return coveringTypes.Count > 0 ? CoveringTypeMapper.TransformTSegPolizasToPolicyResponseList(coveringTypes) : new List<CoveringTypeResponse>();
+
         }
 
         public long DeleteCoveringType(long coveringTypeId)
@@ -54,7 +56,8 @@ namespace TestSeguros.ApplicationServices
 
         public CoveringTypeResponse ReadCoveringTypeById(long id)
         {
-            throw new NotImplementedException();
+            TSeg_Tipo_Cubrimiento covering = CoveringTypeDomain.ReadTSegTipoCubrimientoById(id);
+            return covering != null ? CoveringTypeMapper.TransformTSegTipoCubrimientoToCoveringTypeResponse(covering) : null;
         }
     }
 }
