@@ -40,5 +40,27 @@ namespace TestSeguros.Controllers
             return PolicyApplicationService.CreatePolicy(policyRequest);
         }
 
+        [HttpGet]
+        [Route("")]
+        public List<PolicyResponse> ReadPolicy()
+        {
+            return PolicyApplicationService.ReadPolicies();
+        }
+
+        [HttpDelete]
+        [Route("")]
+        public long DeletePolicy([FromBody] PolicyRequest policyRequest)
+        {
+            return PolicyApplicationService.DeletePolicy(policyRequest.id);
+        }
+
+        [HttpGet]
+        [Route("GetById")]
+        public PolicyResponse ReadPolicyById([FromBody] PolicyRequest policyRequest)
+        {
+            return PolicyApplicationService.ReadPolicyById(policyRequest.id);
+        }
+
+
     }
 }

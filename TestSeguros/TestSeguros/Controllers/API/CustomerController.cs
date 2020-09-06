@@ -40,5 +40,26 @@ namespace TestSeguros.Controllers
             return CustomerApplicationService.CreateCustomer(customerRequest);
         }
 
+        [HttpGet]
+        [Route("")]
+        public List<CustomerResponse> ReadCustomer()
+        {
+            return CustomerApplicationService.ReadCustomers();
+        }
+
+        [HttpDelete]
+        [Route("")]
+        public long DeletePolicy([FromBody] CustomerRequest customerRequest)
+        {
+            return CustomerApplicationService.DeleteCustomer(customerRequest.id);
+        }
+
+        [HttpGet]
+        [Route("GetById")]
+        public CustomerResponse ReadCustomeryId([FromBody] CustomerRequest customerRequest)
+        {
+            return CustomerApplicationService.ReadCustomerById(customerRequest.id);
+        }
+
     }
 }
