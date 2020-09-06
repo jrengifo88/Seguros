@@ -20,7 +20,15 @@ namespace TestSeguros.Repositories
         {
             _context = new SegurosContext();
         }
-        public TSeg_Clientes_Polizas CreateTSegClientePoliza(TSeg_Clientes_Polizas tSegClientePoliza)
+
+       
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public TSeg_Clientes_Polizas CreateTSegClientesPolizas(TSeg_Clientes_Polizas tSegClientePoliza)
         {
             try
             {
@@ -32,36 +40,6 @@ namespace TestSeguros.Repositories
             {
                 throw ex;
             }
-        }
-
-        public void DeleteTSegClientePoliza(TSeg_Clientes_Polizas tSegClientePoliza)
-        {
-            _context.TSeg_Clientes_Polizas.Remove(tSegClientePoliza);
-            _context.SaveChanges();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TSeg_Clientes_Polizas> ReadTSegClientesPolizas()
-        {
-            return _context.TSeg_Clientes_Polizas.ToList();
-        }
-
-        public void UpdateTSegClientePoliza(TSeg_Clientes_Polizas tSegClientePoliza)
-        {
-            TSeg_Clientes_Polizas clientePoliza = _context.TSeg_Clientes_Polizas
-                                           .Where(x => x.id_cliente == tSegClientePoliza.id_cliente && x.id_poliza == tSegClientePoliza.id_poliza).FirstOrDefault();
-            clientePoliza.cobertura = tSegClientePoliza.cobertura;
-            clientePoliza.fecha_inicio = tSegClientePoliza.fecha_inicio;
-            clientePoliza.meses_cobertura = tSegClientePoliza.meses_cobertura;
-            clientePoliza.riesgo = tSegClientePoliza.riesgo;
-            clientePoliza.precio = tSegClientePoliza.precio;
-            clientePoliza.riesgo = tSegClientePoliza.riesgo;
-            clientePoliza.riesgo = tSegClientePoliza.riesgo;
-            _context.SaveChanges();
         }
     }
 }

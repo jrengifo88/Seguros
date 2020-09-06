@@ -7,17 +7,20 @@ using TestSeguros.Application.Request;
 using TestSeguros.Application.Response;
 using TestSeguros.ApplicationServices;
 using TestSeguros.Models;
+using TestSeguros.Validations;
 
 namespace TestSeguros.Controllers
 {
     public class CustomersController : Controller
     {
         CustomerApplicationService CustomerApplicationService;
+        CustomerPolicyApplicationService CustomerPolicyApplicationService;
         PolicyApplicationService PolicyApplicationService;
         public CustomersController()
         {
             CustomerApplicationService = new CustomerApplicationService();
             PolicyApplicationService = new PolicyApplicationService();
+            CustomerPolicyApplicationService = new CustomerPolicyApplicationService();
         }
 
         public ActionResult Customers()
@@ -67,6 +70,54 @@ namespace TestSeguros.Controllers
             return View("~/Views/Customers/PoliciesDetails.cshtml", model);
         }
 
+        public ActionResult AddPolicy(long customerId)
+        {
+            CustomerResponse customer = CustomerApplicationService.ReadCustomerById(customerId);
+
+            List<PolicyResponse> policies = PolicyApplicationService.ReadPolicies();
+            ViewBag.FullName = customer.apellidos + " " + customer.nombres;
+            ViewBag.CustomerId = customer.id;
+            ViewBag.Identification = customer.identificacion;
+            ViewBag.policies = new SelectList(policies, nameof(PolicyResponse.id), nameof(PolicyResponse.nombre));
+            return View("~/Views/Customers/AddPolicy.cshtml");
+        }
+
+        [HttpPost]
+        public ActionResult AddPolicy(long customerId, long policyId, short meses, string riesgo, decimal precio, short cobertura)
+        {
+            try { 
+            CustomerPolicyRequest customerPolicyRequest = new CustomerPolicyRequest
+            {
+                id_cliente = customerId,
+                id_poliza = policyId,
+                meses_cobertura = meses,
+                riesgo =riesgo,
+                precio = precio,
+                cobertura = cobertura,
+                fecha_inicio = DateTime.Now
+            };
+
+            CustomerPolicyValidation.validationsAddPolicy(customerPolicyRequest);
+
+            CustomerPolicyResponse response = CustomerPolicyApplicationService.CreateCustomerPolicy(customerPolicyRequest);
+             return RedirectToAction("PoliciesDetails", new { id = customerId });
+            }
+            catch
+            {
+                CustomerResponse customer = CustomerApplicationService.ReadCustomerById(customerId);
+                ViewBag.FullName = customer.apellidos + " " + customer.nombres;
+                ViewBag.CustomerId = customer.id;
+                ViewBag.Identification = customer.identificacion;
+
+                List<PolicyResponse> policies = PolicyApplicationService.ReadPolicies();
+                ViewBag.policies = new SelectList(policies, nameof(PolicyResponse.id), nameof(PolicyResponse.nombre));
+
+                ViewBag.Error = "La póliza no se pudo adicionar al cliente.";
+
+                return View("~/Views/Customers/AddPolicy.cshtml");
+            }
+        }    
+
         public List<CustomerPolicyResponse> getPoliciesDetails(List<CustomerPolicyResponse> list)
         {
             for (int i=0; i<list.Count;i++)
@@ -77,6 +128,8 @@ namespace TestSeguros.Controllers
             
             return list;
         }
+
+        
 
 
     }

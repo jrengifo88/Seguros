@@ -24,7 +24,7 @@ namespace TestSeguros.DomainServices
 
         public TSeg_Clientes_Polizas CreateCustomerPolicy(TSeg_Clientes_Polizas customerPolicy)
         {
-            throw new NotImplementedException();
+           return CustomerPolicyRepository.CreateTSegClientesPolizas(customerPolicy);
         }
     }
 }

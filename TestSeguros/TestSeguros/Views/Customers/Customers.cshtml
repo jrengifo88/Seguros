@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<TestSeguros.Application.Response.CustomerResponse>
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Clientes";
 }
 
-<h2>View</h2>
+<h2>Clientes</h2>
 
 <p>
     @Html.ActionLink("Crear Nuevo", "Create")
@@ -66,8 +66,6 @@
     </tbody>
 </table>
 
-@{ if (ViewBag.Error != null)
-    {
-        <h3>@ViewBag.Error</h3>
-    }
-}
+<div>
+    @Html.ActionLink("Volver", "Opciones", "Home")
+</div>

@@ -26,5 +26,10 @@ namespace TestSeguros.Controllers
 
             return View();
         }
+
+        public ActionResult Opciones()
+        {
+            return View();
+        }
     }
 }
