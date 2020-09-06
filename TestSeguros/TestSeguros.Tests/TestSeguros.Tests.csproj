@@ -81,6 +81,7 @@
   <ItemGroup>
     <Compile Include="Application\CustomerApplicationServiceUnitTest.cs" />
     <Compile Include="Application\PolicyApplicationServiceUnitTest.cs" />
+    <Compile Include="Controllers\CustomerControllerUnitTest.cs" />
     <Compile Include="Controllers\PolicyControllerUnitTest.cs" />
     <Compile Include="Domain\CustomerDomainServiceUnitTest.cs" />
     <Compile Include="Domain\PolicyDomainServiceUnitTest.cs" />
