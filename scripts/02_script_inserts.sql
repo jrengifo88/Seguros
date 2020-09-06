@@ -1,1 +1,0 @@
-INSERT INTO TSeg_Tipo_Cubrimiento (nombre) VALUES ('Terremoto'),('Incendio'),('Robo'),('Perdida');
